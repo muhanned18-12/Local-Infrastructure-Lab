@@ -1,0 +1,10 @@
+
+apiVersion: v1
+kind: ConfigMap
+
+metadata:
+  name: miniops-config
+
+data:
+  APP_MODE: "lab"
+  LOG_LEVEL: "debug"

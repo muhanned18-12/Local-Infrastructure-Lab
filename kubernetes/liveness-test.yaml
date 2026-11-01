@@ -1,0 +1,30 @@
+apiVersion: v1
+kind: Pod
+
+metadata:
+  name: miniops-liveness-test
+  labels:
+    app: miniops-liveness-test
+
+spec:
+  containers:
+    - name: web
+      image: miniops-web:1.0
+      imagePullPolicy: IfNotPresent
+
+      ports:
+        - containerPort: 80
+
+      readinessProbe:
+        httpGet:
+          path: /
+          port: 80
+        periodSeconds: 5
+
+      livenessProbe:
+        httpGet:
+          path: /liveness-test-not-found
+          port: 80
+        initialDelaySeconds: 5
+        periodSeconds: 5
+        failureThreshold: 2

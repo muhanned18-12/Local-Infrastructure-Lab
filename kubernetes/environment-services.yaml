@@ -1,0 +1,29 @@
+
+apiVersion: v1
+kind: Service
+metadata:
+  name: miniops-web
+  namespace: miniops-dev
+spec:
+  type: ClusterIP
+  selector:
+    app: miniops-web
+  ports:
+    - name: http
+      port: 80
+      targetPort: 80
+
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: miniops-web
+  namespace: miniops-prod
+spec:
+  type: ClusterIP
+  selector:
+    app: miniops-web
+  ports:
+    - name: http
+      port: 80
+      targetPort: 80
